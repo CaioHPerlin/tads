@@ -5,7 +5,6 @@ const printarTabuada = (x, n) => {
 		i = 1;
 		return;
 	}
-
 	i++;
 
 	printarTabuada(x, n);
