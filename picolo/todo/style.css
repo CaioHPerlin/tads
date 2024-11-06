@@ -6,8 +6,7 @@
 	--primary-color: #f8f1ff;
 	--shadow1-color: rgba(0, 0, 0, 0.5);
 	--shadow2-color: rgba(0, 0, 0, 0.3);
-	--box-shadow: var(--shadow1-color) 0px 1px 3px,
-		var(--shadow2-color) 0px 1px 2px;
+	--box-shadow: var(--shadow1-color) 0px 1px 3px, var(--shadow2-color) 0px 1px 2px;
 }
 
 * {
@@ -26,10 +25,18 @@ body {
 }
 
 h1 {
-	color: var(--primary-color);
+	color: var(--bg-color);
 	text-align: center;
 	font-size: 40pt;
 	padding-bottom: 24px;
+}
+
+button {
+	outline: none;
+}
+
+body > h1 {
+	color: var(--primary-color);
 }
 
 .card-container {
@@ -47,7 +54,6 @@ h1 {
 }
 
 .card > h1 {
-	color: var(--bg-color);
 	text-align: left;
 	font-size: 32pt;
 	padding: 10px;
@@ -80,6 +86,9 @@ h1 {
 	gap: 10px;
 	list-style: none;
 	padding: 20px;
+	overflow-y: scroll;
+	height: calc(100% - 135px);
+	max-height: 450px;
 }
 
 .tasks > li {
@@ -87,9 +96,94 @@ h1 {
 	padding: 12px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	font-size: 16pt;
 	color: var(--bg-color);
 	width: 100%;
 	border-radius: 10px;
 	box-shadow: var(--box-shadow);
+}
+
+.task-button-container {
+	gap: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+}
+
+.task-button-container button {
+	font-weight: bolder;
+	background: none;
+	color: var(--bg-color);
+	cursor: pointer;
+	border: 2px solid var(--bg-color);
+	border-radius: 10px;
+	padding: 5px;
+	transition: 0.2s;
+}
+
+.task-button-container button:hover {
+	color: var(--primary-color);
+	background-color: var(--secondary-color);
+	cursor: pointer;
+}
+
+.task-button-container button:hover img {
+	fill: var(--primary-color);
+	background-color: var(--secondary-color);
+	cursor: pointer;
+}
+
+.tasks > li img {
+	width: 20px;
+	height: 20px;
+}
+
+/* modal */
+dialog {
+	margin: 20vh auto;
+	padding: 20px;
+	border-radius: 15px;
+	background: var(--primary-color);
+	box-shadow: var(--box-shadow);
+	border-color: var(--bg-color);
+	width: 25vw;
+	min-width: 360px;
+}
+
+dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(1px);
+}
+
+dialog input {
+	width: 100%;
+	border: 2px solid var(--bg-color);
+	border-radius: 10px;
+	padding: 10px 15px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.dialog-button-container {
+	gap: 10px;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+}
+
+.dialog-button-container button {
+	font-weight: bolder;
+	background: none;
+	color: var(--bg-color);
+	cursor: pointer;
+	border: 2px solid var(--bg-color);
+	border-radius: 10px;
+	padding: 10px 15px;
+}
+
+.dialog-button-container button:hover {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
 }
