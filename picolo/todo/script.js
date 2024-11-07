@@ -9,14 +9,21 @@ const todoElement = document.querySelector('#todo .tasks');
 const inProgressElement = document.querySelector('#in-progress .tasks');
 const doneElement = document.querySelector('#done .tasks');
 
-const columnToElement = {
+const stateToElement = {
 	todo: todoElement,
 	inProgress: inProgressElement,
 	done: doneElement,
 };
 
+const startTask = (index) => {
+	tasks[index].state = 'inProgress';
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+
+	processTasks();
+};
+
 const finishTask = (index) => {
-	tasks[index].column = 'done';
+	tasks[index].state = 'done';
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 
 	processTasks();
@@ -28,14 +35,14 @@ const processTasks = () => {
 	doneElement.innerHTML = '';
 
 	tasks.forEach((task, i) => {
-		containerElement = columnToElement[task.column];
+		containerElement = stateToElement[task.state];
 
 		let taskButtonsHTML = '';
 
-		if (['todo', 'inProgress'].includes(task.column)) {
+		if (['todo', 'inProgress'].includes(task.state)) {
 			taskButtonsHTML = `
                 <div class='task-button-container'>
-                ${task.column === 'todo' ? `<button onclick='finishTask(${i})'><img src='${startSVG}' /></button>` : ''}
+                ${task.state === 'todo' ? `<button onclick='startTask(${i})'><img src='${startSVG}' /></button>` : ''}
                     <button onclick='finishTask(${i})'><img src='${stopSVG}' /></button>
                 </div>  
             `;
@@ -66,6 +73,14 @@ newTaskButton.addEventListener('click', () => {
 	dialog.showModal();
 });
 
+const clearTaskButton = document.querySelector('#clear-tasks-btn');
+clearTaskButton.addEventListener('click', () => {
+	tasks = tasks.filter((task) => task.state !== 'done');
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+
+	processTasks();
+});
+
 // Listen for modal close button
 const closeDialogButton = document.querySelector('#close-dialog-btn');
 closeDialogButton.addEventListener('click', () => {
@@ -83,7 +98,7 @@ dialogForm.addEventListener('submit', (e) => {
 	addNewTask({
 		title: titleInput.value,
 		description: descriptionInput.value,
-		column: 'todo',
+		state: 'todo',
 	});
 
 	titleInput.value = '';

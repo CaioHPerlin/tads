@@ -92,7 +92,7 @@ body > h1 {
 }
 
 .tasks > li {
-	min-height: 5vh;
+	min-height: 62px;
 	padding: 12px;
 	display: flex;
 	align-items: center;
@@ -112,26 +112,30 @@ body > h1 {
 }
 
 .task-button-container button {
-	font-weight: bolder;
+	display: flex;
+	align-items: center;
 	background: none;
+	font-weight: bolder;
 	color: var(--bg-color);
 	cursor: pointer;
 	border: 2px solid var(--bg-color);
 	border-radius: 10px;
 	padding: 5px;
+	cursor: pointer;
 	transition: 0.2s;
 }
 
 .task-button-container button:hover {
 	color: var(--primary-color);
 	background-color: var(--secondary-color);
-	cursor: pointer;
+}
+
+.task-button-container button img {
+	filter: invert(39%) sepia(3%) saturate(2222%) hue-rotate(211deg) brightness(95%) contrast(86%);
 }
 
 .task-button-container button:hover img {
-	fill: var(--primary-color);
-	background-color: var(--secondary-color);
-	cursor: pointer;
+	filter: invert(97%) sepia(3%) saturate(3085%) hue-rotate(192deg) brightness(100%) contrast(103%);
 }
 
 .tasks > li img {
