@@ -8,7 +8,6 @@ produtos_mercado_b = ['Chá', 'Queijo', 'Feijão', 'Macarrão', 'Farinha', 'Aç�
 precos_mercado_b = [3.99, 27.8, 9.5, 3.2, 8.0, 2.79, 9.99, 26.25, 8.89, 27.0, 18.90, 3.5]
 
 def calc_menor_preco_produto(produto):
-
     index_mercado_a = produtos_mercado_a.index(produto) if produto in produtos_mercado_a else None
     index_mercado_b = produtos_mercado_b.index(produto) if produto in produtos_mercado_b else None
 
