@@ -1,13 +1,16 @@
-// Assets
 const startSVG = './assets/start.svg';
 const stopSVG = './assets/stop.svg';
-
-// Task management
-tasks = [];
 
 const todoElement = document.querySelector('#todo .tasks');
 const inProgressElement = document.querySelector('#in-progress .tasks');
 const doneElement = document.querySelector('#done .tasks');
+const dialog = document.querySelector('dialog');
+const newTaskButton = document.querySelector('#new-task-btn');
+const closeDialogButton = document.querySelector('#close-dialog-btn');
+const clearTaskButton = document.querySelector('#clear-tasks-btn');
+const dialogForm = document.querySelector('dialog form');
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const stateToElement = {
 	todo: todoElement,
@@ -15,93 +18,99 @@ const stateToElement = {
 	done: doneElement,
 };
 
-const startTask = (index) => {
-	tasks[index].state = 'inProgress';
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-
-	processTasks();
+const init = () => {
+	newTaskButton.addEventListener('click', () => dialog.showModal());
+	closeDialogButton.addEventListener('click', () => dialog.close());
+	clearTaskButton.addEventListener('click', clearCompletedTasks);
+	dialogForm.addEventListener('submit', handleDialogSubmit);
+	renderTasks();
 };
 
-const finishTask = (index) => {
-	tasks[index].state = 'done';
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-
-	processTasks();
-};
-
-const processTasks = () => {
-	todoElement.innerHTML = '';
-	inProgressElement.innerHTML = '';
-	doneElement.innerHTML = '';
-
-	tasks.forEach((task, i) => {
-		containerElement = stateToElement[task.state];
-
-		let taskButtonsHTML = '';
-
-		if (['todo', 'inProgress'].includes(task.state)) {
-			taskButtonsHTML = `
-                <div class='task-button-container'>
-                ${task.state === 'todo' ? `<button onclick='startTask(${i})'><img src='${startSVG}' /></button>` : ''}
-                    <button onclick='finishTask(${i})'><img src='${stopSVG}' /></button>
-                </div>  
-            `;
-		}
-
-		containerElement.innerHTML += `<li>${task.title}${taskButtonsHTML}</li>`;
-	});
-};
-
-previousTasks = JSON.parse(localStorage.getItem('tasks'));
-if (previousTasks) {
-	tasks = previousTasks;
-}
-processTasks();
-
-const addNewTask = (task) => {
-	tasks.push(task);
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-
-	processTasks();
-};
-
-const newTaskButton = document.querySelector('#new-task-btn');
-const dialog = document.querySelector('dialog');
-
-// Listen for modal opening
-newTaskButton.addEventListener('click', () => {
-	dialog.showModal();
-});
-
-const clearTaskButton = document.querySelector('#clear-tasks-btn');
-clearTaskButton.addEventListener('click', () => {
-	tasks = tasks.filter((task) => task.state !== 'done');
-	localStorage.setItem('tasks', JSON.stringify(tasks));
-
-	processTasks();
-});
-
-// Listen for modal close button
-const closeDialogButton = document.querySelector('#close-dialog-btn');
-closeDialogButton.addEventListener('click', () => {
-	dialog.close();
-});
-
-// Listen for dialog submit
-const dialogForm = document.querySelector('dialog form');
-dialogForm.addEventListener('submit', (e) => {
+const handleDialogSubmit = (e) => {
 	e.preventDefault();
-	const titleInput = dialogForm.title;
-	const descriptionInput = dialogForm.description;
-	console.log(`Adding new task with Title=${titleInput.value} and Description=${descriptionInput.value}`);
 
-	addNewTask({
-		title: titleInput.value,
-		description: descriptionInput.value,
-		state: 'todo',
-	});
+	const title = dialogForm.title.value.trim();
 
-	titleInput.value = '';
-	descriptionInput.value = '';
+	if (!title) {
+		alert('A task must have a title!');
+		return;
+	}
+
+	addTask({ title, state: 'todo' });
+
+	dialogForm.reset();
 	dialog.close();
-});
+};
+
+const addTask = (task) => {
+	tasks.push(task);
+	saveTasks();
+	renderTasks();
+};
+
+const clearCompletedTasks = () => {
+	tasks = tasks.filter((task) => task.state !== 'done');
+	saveTasks();
+	renderTasks();
+};
+
+const updateTaskState = (index, newState) => {
+	if (tasks[index]) {
+		tasks[index].state = newState;
+		saveTasks();
+		renderTasks();
+	}
+};
+
+const renderTasks = () => {
+	// Clear all columns
+	Object.values(stateToElement).forEach((element) => (element.innerHTML = ''));
+
+	tasks.forEach((task, index) => {
+		const container = stateToElement[task.state];
+
+		const taskElement = createTaskElement(task, index);
+		container.appendChild(taskElement);
+	});
+};
+
+const createTaskElement = (task, index) => {
+	const taskElement = document.createElement('li');
+	taskElement.className = 'task';
+
+	const taskTitle = document.createElement('span');
+	taskTitle.textContent = task.title;
+
+	const buttonContainer = document.createElement('div');
+	buttonContainer.className = 'task-button-container';
+
+	if (task.state === 'todo') {
+		const startButton = createButton(() => updateTaskState(index, 'inProgress'), startSVG);
+		buttonContainer.appendChild(startButton);
+	}
+
+	if (['todo', 'inProgress'].includes(task.state)) {
+		const finishButton = createButton(() => updateTaskState(index, 'done'), stopSVG);
+		buttonContainer.appendChild(finishButton);
+	}
+
+	taskElement.appendChild(taskTitle);
+	taskElement.appendChild(buttonContainer);
+
+	return taskElement;
+};
+
+const createButton = (onClick, iconSrc) => {
+	const button = document.createElement('button');
+	button.addEventListener('click', onClick);
+
+	const icon = document.createElement('img');
+	icon.src = iconSrc;
+
+	button.appendChild(icon);
+	return button;
+};
+
+const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
+
+init();

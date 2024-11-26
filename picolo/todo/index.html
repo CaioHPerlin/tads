@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todo</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <h1>Todo App Example</h1>
-    <main class="card-container">
-        <div id="todo" class='card'>
-            <h1>To Do</h1>
-            <ul class='tasks'>
-            </ul>
-            <button id='new-task-btn'>New Task</button>
-        </div>
-        <div id="in-progress" class='card'>
-            <h1>In Progress</h1>
-            <ul class='tasks'>
-            </ul>
-        </div>
-        <div id="done" class='card'>
-            <h1>Done</h1>
-            <ul class='tasks'>
-            </ul>
-            <button id='clear-tasks-btn'>Clear</button>
-        </div>
-    </main>
-    <dialog>
-        <form>
-            <h1>Add a new task</h1>
-            <label for="title">Title</label>
-            <input name='title' id='title' type="text">
-            <label for="description">Description</label>
-            <input name='description' id='description' type="text">
-            <div class='dialog-button-container'>
-                <button type='button' id='close-dialog-btn'>Close</button>
-                <button type='submit'>Create</button>
-            </div>
-        </form>
-    </dialog>
-    <script src="script.js"></script>
-</body>
-
+	<body>
+		<h1>Todo App Example</h1>
+		<main class="card-container">
+			<div id="todo" class="card">
+				<h1>To Do</h1>
+				<ul class="tasks"></ul>
+				<button id="new-task-btn">New Task</button>
+			</div>
+			<div id="in-progress" class="card">
+				<h1>In Progress</h1>
+				<ul class="tasks"></ul>
+			</div>
+			<div id="done" class="card">
+				<h1>Done</h1>
+				<ul class="tasks"></ul>
+				<button id="clear-tasks-btn">Clear</button>
+			</div>
+		</main>
+		<dialog>
+			<form>
+				<h1>Add a new task</h1>
+				<label for="title">Title</label>
+				<input name="title" id="title" type="text" />
+				<div class="dialog-button-container">
+					<button type="button" id="close-dialog-btn">Close</button>
+					<button type="submit">Create</button>
+				</div>
+			</form>
+		</dialog>
+		<script src="script.js"></script>
+	</body>
 </html>
