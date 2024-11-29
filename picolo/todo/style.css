@@ -22,6 +22,7 @@ body {
 	min-height: 80vh;
 	padding: 1%;
 	flex-direction: row;
+	justify-items: center;
 }
 
 h1 {
@@ -41,6 +42,7 @@ body > h1 {
 
 .card-container {
 	display: flex;
+	justify-content: center;
 	gap: 20px;
 }
 
@@ -48,8 +50,8 @@ body > h1 {
 	position: relative;
 	border-radius: 15px;
 	background: var(--primary-color);
-	min-height: 40vh;
-	min-width: 18vw;
+	min-height: 60vh;
+	min-width: 20vmax;
 	box-shadow: var(--box-shadow);
 }
 
