@@ -22,6 +22,12 @@ const init = () => {
 	newTaskButton.addEventListener('click', () => dialog.showModal());
 	closeDialogButton.addEventListener('click', () => dialog.close());
 	clearTaskButton.addEventListener('click', clearCompletedTasks);
+
+
+
+
+
+	
 	dialogForm.addEventListener('submit', handleDialogSubmit);
 	renderTasks();
 };
