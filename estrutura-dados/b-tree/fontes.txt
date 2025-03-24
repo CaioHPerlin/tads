@@ -1,0 +1,4 @@
+- Professor. Marcos André Silveira Kutova (PUC Minas)
+- GeeksForGeeks (https://www.geeksforgeeks.org/b-tree-in-python/)
+- Programiz (https://www.programiz.com/dsa/b-tree)
+- Aayushjn (https://github.com/Aayushjn/B-Tree)

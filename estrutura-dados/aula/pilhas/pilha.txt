@@ -1,0 +1,37 @@
+def criarPilha():
+    return []
+
+def vazia(pilha):
+    return len(pilha) == 0
+
+def empilhar(pilha, item):
+    pilha.append(item)
+    print(item, 'empilhado na pilha')
+
+def desempilhar(pilha):
+    if(vazia(pilha)):
+        return "pilha vazia"
+    return pilha.pop()
+
+def verificarTopo(pilha):
+    if(vazia(pilha)):
+        return "pilha vazia"
+    return pilha[len(pilha) - 1]
+
+def verificarPalindromo(entrada):
+    pilha_entrada = criarPilha()
+
+    [empilhar(pilha_entrada, c.lower()) for c in entrada]
+
+    inversao = ""
+    while not vazia(pilha_entrada):
+        inversao += desempilhar(pilha_entrada)
+
+    return entrada == inversao
+
+entrada = input("Digite uma palavra para verificar se é um palíndromo: ").strip()
+
+if verificarPalindromo(entrada):
+    print(f'\n A palavra "{entrada}" é um palíndromo!')
+else:
+    print(f'\n A palavra "{entrada}" não é um palíndromo :(')

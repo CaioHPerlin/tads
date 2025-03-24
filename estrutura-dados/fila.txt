@@ -1,0 +1,5 @@
+A fila é ideal para cenários onde a ordem de processamento deve seguir a sequência de chegada (First In, First Out; FIFO). Ex:
+
+- Sistemas de impressão: Enfileiramento de documentos para impressão na ordem em que foram solicitados.
+- APIs: Enfileiramento de requisições para estabelecer uma ordem de atendimento.
+- Mensageria: Em sistemas como RabbitMQ ou Kafka, onde mensagens são processadas na ordem em que chegam.
