@@ -1,89 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu do Restaurante</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f8f8;
-        text-align: center;
-      }
-      h1 {
-        color: #b22222;
-      }
-      .menu {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      .category {
-        margin-bottom: 20px;
-      }
-      .category h2 {
-        border-bottom: 2px solid #b22222;
-        padding-bottom: 5px;
-        color: #b22222;
-      }
-      .item {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-      }
-      .item img {
-        width: 80px;
-        height: 80px;
-        border-radius: 10px;
-        margin-right: 15px;
-      }
-      .item p {
-        margin: 0;
-        font-size: 16px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Bem-vindo ao Restaurante dos Crias</h1>
-    <div class="menu">
-      <div class="category">
-        <h2>Entradas</h2>
-        <div class="item">
-          <img src="https://via.placeholder.com/80" alt="Bruschetta" />
-          <p>Bruschetta - Pão italiano com tomate e manjericão</p>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu do Restaurante</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
+    body {
+      font-family: "Fredericka the Great", serif;
+      font-weight: 400;
+      font-style: normal;
+      text-align: center;
+      background: rgb(0, 0, 0);
+      background: linear-gradient(165deg, rgba(0, 0, 0, 1) 0%, rgba(71, 14, 14, 1) 62%, rgba(51, 11, 11, 1) 100%);
+    }
+
+    h1 {
+      color: #b22222;
+      text-transform: uppercase;
+    }
+
+    .menu {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .category {
+      margin-bottom: 20px;
+    }
+
+    .category h2 {
+      border-bottom: 2px solid #b22222;
+      padding-bottom: 5px;
+      color: #b22222;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .item p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .item > div {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .item > div span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .item > div p {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>restaurante</h1>
+  <div class="menu">
+    <div class="category">
+      <h2>Entradas</h2>
+      <div class="item">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1668095397731-e2096f39f3d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Bruschetta" />
+          <div>
+            <p>Bruschetta - Pão italiano com tomate e manjericão </p> <span>R$ 25,00</span>
+          </div>
       </div>
-      <div class="category">
-        <h2>Carnes</h2>
-        <div class="item">
-          <img src="https://via.placeholder.com/80" alt="Picanha" />
-          <p>Picanha - A melhor carne grelhada</p>
-        </div>
-      </div>
-      <div class="category">
-        <h2>Massas</h2>
-        <div class="item">
-          <img src="https://via.placeholder.com/80" alt="Lasanha" />
-          <p>Lasanha - Massa ao forno com queijo e molho especial</p>
-        </div>
-      </div>
-      <div class="category">
-        <h2>Bebidas</h2>
-        <div class="item">
-          <img src="https://via.placeholder.com/80" alt="Suco Natural" />
-          <p>Suco Natural - Sabor a sua escolha</p>
-        </div>
-      </div>
-      <div class="category">
-        <h2>Sobremesas</h2>
-        <div class="item">
-          <img src="https://via.placeholder.com/80" alt="Pudim" />
-          <p>Pudim - O clássico doce brasileiro</p>
+    </div>
+    <div class="category">
+      <h2>Carnes</h2>
+      <div class="item">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1668616816953-a02cd1a44027?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Picanha" />
+        <div>
+          <p>Picanha - A melhor carne grelhada </p> <span>R$ 75,00</span>
         </div>
       </div>
     </div>
-  </body>
+    <div class="category">
+      <h2>Massas</h2>
+      <div class="item">
+        <img
+          src="https://images.unsplash.com/photo-1629115916087-7e8c114a24ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Lasanha" />
+          <div>
+            <p>Lasanha - Massa ao forno com queijo e molho especial </p> <span>R$ 45,00</span>
+          </div>
+      </div>
+    </div>
+    <div class="category">
+      <h2>Bebidas</h2>
+      <div class="item">
+        <img
+          src="https://images.unsplash.com/photo-1602860637860-fa3d04533a07?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Suco Natural" />
+          <div>
+            <p>Suco Natural - Sabor a sua escolha </p> <span>R$ 10,00</span>
+          </div>
+      </div>
+    </div>
+    <div class="category">
+      <h2>Sobremesas</h2>
+      <div class="item">
+        <img
+          src="https://images.unsplash.com/photo-1702728052103-69473aa7ed77?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Pudim" />
+          <div>
+            <p>Pudim - O clássico doce brasileiro</p>  <span>R$ 20,00</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
